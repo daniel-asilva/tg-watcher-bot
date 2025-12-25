@@ -1,0 +1,20 @@
+# https://homeserver.pt/tutoriais-linux/telegram-channel-scraper-ferramenta-poderosa-para-extrair-dados-de-canais-telegram-com-python/
+# https://proxy-seller.com/pt/blog/como-extrair-dados-do-canal-de-telegrama-usando-python/
+# https://github.com/unnohwn/telegram-scraper/blob/main/telegram-scraper.py
+
+# scrapper de canais do telegram
+services:
+  tg-channel-watcher:
+    container_name: tg-channel-watcher
+    build: .
+    image: local/tg-channel-watcher
+    env_file: .env
+    volumes:
+      - ./anon.session:/app/anon.session
+      - ./logs:/app/logs
+    restart: unless-stopped
+    environment:
+      TZ: $TZ
+    labels:
+      - com.centurylinklabs.watchtower.enable=false
+      - traefik.enable=false

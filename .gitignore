@@ -1,0 +1,4 @@
+.tg-watcher
+.env
+*.session
+logs/
