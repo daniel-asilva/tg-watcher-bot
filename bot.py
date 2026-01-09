@@ -73,7 +73,7 @@ async def handler(event):
             logging.info("Oferta Monitor! Enviando notificacao...")
             enviar_notificacao("Monitor LG UltraGear:", link)
 
-    if "JBL" in texto and "SB580" in texto:
+    if "jbl" in texto and "sb580" in texto:
         username = "promotop"
         message_id = event.id
         link = f"https://t.me/{username}/{message_id}"
@@ -104,7 +104,7 @@ async def handler(event):
         logging.info("Cupom KaBuM encontrado! Enviando notificacao...")
         enviar_notificacao("Cupom KaBuM:", link)
 
-    if "iPhone 16e" in texto and not "shopee" in texto:
+    if "iphone 16e" in texto and not "shopee" in texto:
         precos = re.findall(r"r\$\s*([0-9]+(?:,[0-9]{2})?)", texto)
         precos_float = []
         for p in precos:
@@ -120,7 +120,7 @@ async def handler(event):
             logging.info("Oferta iPhone 16e! Enviando notificacao...")
             enviar_notificacao("iPhone 16e:", link)
 
-    if "iPhone 16 " in texto and "128" in texto and not "iPhone 16 Pro" in texto and not "shopee" in texto:
+    if "iphone 16 " in texto and "128" in texto and not "iphone 16 pro" in texto and not "shopee" in texto:
         precos = re.findall(r"r\$\s*([0-9]+(?:,[0-9]{2})?)", texto)
         precos_float = []
         for p in precos:
@@ -136,7 +136,7 @@ async def handler(event):
             logging.info("Oferta iPhone 16! Enviando notificacao...")
             enviar_notificacao("iPhone 16:", link)
 
-    if "NVME" in texto and re.findall(r"\b(1\s*TB|2\s*TB|NV3)\b", texto, flags=re.IGNORECASE) and not "shopee" in texto:
+    if "nvme" in texto and re.findall(r"\b(1\s*tb|2\s*tb|nv3)\b", texto, flags=re.IGNORECASE) and not "shopee" in texto:
         username = "promotop"
         message_id = event.id
         link = f"https://t.me/{username}/{message_id}"
