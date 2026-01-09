@@ -57,23 +57,7 @@ client = TelegramClient(SESSION, API_ID, API_HASH)
 @client.on(events.NewMessage(chats=CHANNEL))
 async def handler(event):
     texto = event.raw_text.lower()
-    # if "controle" in texto and "xbox" in texto:
-    #     precos = re.findall(r"r\$\s*([0-9]+(?:,[0-9]{2})?)", texto)
-    #     precos_float = []
-    #     for p in precos:
-    #         p = p.replace(",", ".")  # transformar vírgula em ponto para float
-    #         try:
-    #             precos_float.append(float(p))
-    #         except ValueError:
-    #             continue
-    #     if precos_float and min(precos_float) < 300:
-    #         username = "promotop"
-    #         message_id = event.id
-    #         link = f"https://t.me/{username}/{message_id}"
-    #         logging.info("Oferta Controle Xbox encontrada! Enviando notificacao...")
-    #         enviar_notificacao("Controle Xbox:", link)
-
-    if "LG" in texto and "ultragear" in texto and "UltraWide" in texto:
+    if "lg" in texto and "ultragear" in texto:
         precos = re.findall(r"r\$\s*([0-9]+(?:,[0-9]{2})?)", texto)
         precos_float = []
         for p in precos:
