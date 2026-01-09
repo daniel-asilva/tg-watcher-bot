@@ -155,7 +155,7 @@ def verifica_notebook_oferta(texto):
     t = texto
     inclui_notebook = 'notebook' in t
     inclui_512gb = re.search(r'\b512\s*gb\b', t)  # aceita com ou sem espaço(s) entre 512 e gb
-    exclui = any(x in t for x in ['gamer', 'predator', 'linux', 'keepos', 'shopee'])
+    exclui = any(x in t for x in ['gamer', 'predator', 'nitro', 'linux', 'keepos', 'shopee'])
     win_flag = any(w in t for w in ['windows 11', 'win 11', 'w11'])
     return inclui_notebook and inclui_512gb and not exclui, win_flag
 
