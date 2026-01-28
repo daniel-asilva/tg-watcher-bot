@@ -80,7 +80,7 @@ async def handler(event):
         logging.info("Oferta Soundbar encontrada! Enviando notificacao...")
         enviar_notificacao("Soundbar JBL:", link)
 
-    if "cupom" in texto and "livre" in texto:
+    if "cupom" in texto and "livre" in texto and not "creatina" in texto:
         matches = re.findall(r"(\d+)\s*%", texto)
         porcentagens = [int(n) for n in matches]
         if porcentagens and max(porcentagens) >= 20:
