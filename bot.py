@@ -73,13 +73,6 @@ async def handler(event):
             logging.info("Oferta Monitor! Enviando notificacao...")
             enviar_notificacao("Monitor LG UltraGear:", link)
 
-    if "jbl" in texto and "sb580" in texto:
-        username = "promotop"
-        message_id = event.id
-        link = f"https://t.me/{username}/{message_id}"
-        logging.info("Oferta Soundbar encontrada! Enviando notificacao...")
-        enviar_notificacao("Soundbar JBL:", link)
-
     if "cupom" in texto and "livre" in texto and not "creatina" in texto:
         matches = re.findall(r"(\d+)\s*%", texto)
         porcentagens = [int(n) for n in matches]
