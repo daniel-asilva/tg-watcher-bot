@@ -58,6 +58,16 @@ source .tg-watcher/bin/activate
 pip install -r requirements.txt
 ```
 
+#### Carregar as variáveis de ambiente
+
+Para não mexer no código, você pode carregar o `.env` antes de executar o Python.
+
+```bash
+set -a
+source .env
+set +a
+```
+
 #### Rodar o script para gerar a sessão
 
 ```bash
