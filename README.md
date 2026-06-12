@@ -40,6 +40,9 @@ TZ=...
 
 Antes de subir o container, é preciso autenticar sua conta Telegram localmente para gerar o arquivo de sessão do Telethon, para depois reutilizar no Docker. Por conta do 2FA, há prompts interativos durante a primeira execução, os quais não é possível responder na execução do container.
 
+> [!IMPORTANT]
+> Não use a mesma chave de autorização (`anon.session`) simultaneamente em dois endereços IP diferentes. Utilize uma mesma sessão exclusivamente ou use **sessões distintas**. Caso contrário, ela deverá ser recriada, conforme passos abaixo.
+
 #### Criar o ambiente virtual (venv)
 
 No diretório do projeto, crie e ative o venv:
