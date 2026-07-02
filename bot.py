@@ -17,17 +17,27 @@ PUSHOVER_API_TOKEN = os.environ.get("PUSHOVER_API_TOKEN")
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
-
-handler = TimedRotatingFileHandler(
-    "./logs/bot.log",
-    when="midnight",
-    backupCount=5
-)
+logger.propagate = False
 
 formatter = logging.Formatter("%(asctime)s [%(levelname)s] %(message)s")
-handler.setFormatter(formatter)
 
-logger.addHandler(handler)
+file_handler = TimedRotatingFileHandler(
+    "./logs/bot.log",
+    when="midnight",
+    backupCount=5,
+    encoding="utf-8"
+)
+
+file_handler.setLevel(logging.INFO)
+file_handler.setFormatter(formatter)
+
+stream_handler = logging.StreamHandler(sys.stdout)
+stream_handler.setLevel(logging.INFO)
+stream_handler.setFormatter(formatter)
+
+logger.handlers.clear()
+logger.addHandler(file_handler)
+logger.addHandler(stream_handler)
 
 def excecao_handler(exc_type, exc_value, exc_traceback):
     if issubclass(exc_type, KeyboardInterrupt):
