@@ -67,7 +67,7 @@ client = TelegramClient(SESSION, API_ID, API_HASH)
 @client.on(events.NewMessage(chats=CHANNEL))
 async def handler(event):
     texto = event.raw_text.lower()
-    if "lg" in texto and "ultragear" in texto:
+    if "lg" in texto and "ultragear" in texto and not "fhd" in texto and not "full hd" in texto:
         precos = re.findall(r"r\$\s*([0-9]+(?:,[0-9]{2})?)", texto)
         precos_float = []
         for p in precos:
@@ -93,51 +93,51 @@ async def handler(event):
             logging.info("Cupom Mercado Livre encontrado! Enviando notificacao...")
             enviar_notificacao("Cupom Mercado Livre:", link)
 
-    if "cupom" in texto and "amazon" in texto:
+    if "cupom" in texto and "amazon" in texto and ("%" in texto or "off" in texto):
         username = "promotop"
         message_id = event.id
         link = f"https://t.me/{username}/{message_id}"
         logging.info("Cupom Amazon encontrado! Enviando notificacao...")
         enviar_notificacao("Cupom Amazon:", link)
 
-    if "cupom" in texto and "kabum" in texto:
-        username = "promotop"
-        message_id = event.id
-        link = f"https://t.me/{username}/{message_id}"
-        logging.info("Cupom KaBuM encontrado! Enviando notificacao...")
-        enviar_notificacao("Cupom KaBuM:", link)
+    # if "cupom" in texto and "kabum" in texto:
+    #     username = "promotop"
+    #     message_id = event.id
+    #     link = f"https://t.me/{username}/{message_id}"
+    #     logging.info("Cupom KaBuM encontrado! Enviando notificacao...")
+    #     enviar_notificacao("Cupom KaBuM:", link)
 
-    if "iphone 16e" in texto and not "shopee" in texto:
-        precos = re.findall(r"r\$\s*([0-9]+(?:,[0-9]{2})?)", texto)
-        precos_float = []
-        for p in precos:
-            p = p.replace(",", ".")  # transformar vírgula em ponto para float
-            try:
-                precos_float.append(float(p))
-            except ValueError:
-                continue
-        if precos_float and min(precos_float) < 3100:
-            username = "promotop"
-            message_id = event.id
-            link = f"https://t.me/{username}/{message_id}"
-            logging.info("Oferta iPhone 16e! Enviando notificacao...")
-            enviar_notificacao("iPhone 16e:", link)
+    # if "iphone 16e" in texto and not "shopee" in texto:
+    #     precos = re.findall(r"r\$\s*([0-9]+(?:,[0-9]{2})?)", texto)
+    #     precos_float = []
+    #     for p in precos:
+    #         p = p.replace(",", ".")  # transformar vírgula em ponto para float
+    #         try:
+    #             precos_float.append(float(p))
+    #         except ValueError:
+    #             continue
+    #     if precos_float and min(precos_float) < 3100:
+    #         username = "promotop"
+    #         message_id = event.id
+    #         link = f"https://t.me/{username}/{message_id}"
+    #         logging.info("Oferta iPhone 16e! Enviando notificacao...")
+    #         enviar_notificacao("iPhone 16e:", link)
 
-    if "iphone 16 " in texto and "128" in texto and not "iphone 16 pro" in texto and not "shopee" in texto:
-        precos = re.findall(r"r\$\s*([0-9]+(?:,[0-9]{2})?)", texto)
-        precos_float = []
-        for p in precos:
-            p = p.replace(",", ".")  # transformar vírgula em ponto para float
-            try:
-                precos_float.append(float(p))
-            except ValueError:
-                continue
-        if precos_float and min(precos_float) < 4100:
-            username = "promotop"
-            message_id = event.id
-            link = f"https://t.me/{username}/{message_id}"
-            logging.info("Oferta iPhone 16! Enviando notificacao...")
-            enviar_notificacao("iPhone 16:", link)
+    # if "iphone 16 " in texto and "128" in texto and not "iphone 16 pro" in texto and not "shopee" in texto:
+    #     precos = re.findall(r"r\$\s*([0-9]+(?:,[0-9]{2})?)", texto)
+    #     precos_float = []
+    #     for p in precos:
+    #         p = p.replace(",", ".")  # transformar vírgula em ponto para float
+    #         try:
+    #             precos_float.append(float(p))
+    #         except ValueError:
+    #             continue
+    #     if precos_float and min(precos_float) < 4100:
+    #         username = "promotop"
+    #         message_id = event.id
+    #         link = f"https://t.me/{username}/{message_id}"
+    #         logging.info("Oferta iPhone 16! Enviando notificacao...")
+    #         enviar_notificacao("iPhone 16:", link)
 
     if "nvme" in texto and re.findall(r"\b(1\s*tb|2\s*tb|nv3)\b", texto, flags=re.IGNORECASE) and not "shopee" in texto:
         username = "promotop"
